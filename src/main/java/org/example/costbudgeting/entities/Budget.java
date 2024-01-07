@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.example.costbudgeting.entities.costsbreakdown.Components;
 import org.example.costbudgeting.enums.EditalState;
 import org.example.costbudgeting.enums.Manufacturer;
 import org.example.costbudgeting.enums.ProductType;
@@ -47,9 +46,6 @@ public class Budget implements Serializable {
 
     @Column(nullable = false)
     private String responsibleEmployee;
-
-    @ManyToOne
-    private Components components;
 
     private Integer unitNetPercentage;
     private Integer unitNetOrder;

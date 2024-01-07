@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.example.costbudgeting.entities.Budget;
 
 @Entity
 @Getter
@@ -15,9 +16,15 @@ public class Components {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    private String componentName;
+
+    @OneToOne
     private RawMaterial rawMaterial;
 
-    @ManyToOne
+    @OneToOne
     private LaborCost laborCost;
+
+    @ManyToOne
+    @JoinColumn(name = "budget_id", nullable = false)
+    private Budget budget;
 }

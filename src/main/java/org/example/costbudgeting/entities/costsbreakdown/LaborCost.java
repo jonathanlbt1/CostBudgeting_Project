@@ -1,9 +1,6 @@
 package org.example.costbudgeting.entities.costsbreakdown;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.example.costbudgeting.entities.costsbreakdown.enums.HourTax;
 
@@ -24,4 +21,8 @@ public class LaborCost {
     public Long getTotalLaborCost(HourTax hourTax, Long budgetTime){
         return hourTax.getValue() * budgetTime;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "components_id", nullable = false)
+    private Components components;
 }

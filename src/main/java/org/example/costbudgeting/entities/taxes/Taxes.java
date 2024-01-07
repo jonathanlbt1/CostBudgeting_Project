@@ -1,9 +1,6 @@
 package org.example.costbudgeting.entities.taxes;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -20,8 +17,14 @@ public class Taxes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated
     private ICMS icms;
+
+    @Enumerated
     private IPI ipi;
+
+    @Enumerated
     private PIS_COFINS pis_cofins;
 
 }

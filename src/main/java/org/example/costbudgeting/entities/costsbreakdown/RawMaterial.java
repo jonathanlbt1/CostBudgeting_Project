@@ -31,4 +31,8 @@ public class RawMaterial {
     public Double getTotalCostOfRawMaterials() {
         return getUnitCostOfRawMaterial() * quantity;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "components_id", nullable = false)
+    private Components components;
 }
