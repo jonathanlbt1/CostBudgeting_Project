@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.example.costbudgeting.enums.EditalState;
+import org.example.costbudgeting.enums.BrazilianState;
 import org.example.costbudgeting.enums.Manufacturer;
 import org.example.costbudgeting.enums.ProductType;
 
@@ -30,7 +30,7 @@ public class Budget implements Serializable {
     private String editalNumber;
 
     @Column(nullable = false)
-    private EditalState editalState;
+    private BrazilianState brazilianState;
 
     @Column(nullable = false)
     private Manufacturer manufacturerer;

@@ -1,35 +1,37 @@
 package org.example.costbudgeting.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 @Entity
 @ToString
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class Client {
+public class Client implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "client_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(nullable = false)
+    @Column(name ="email")
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "phone")
     private String phone;
 
-    @Column(nullable = false)
-    private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    public Address address;
 
-    @Column(nullable = false)
-    private String city;
-
-    @Column(nullable = false)
-    private String state;
 
 }

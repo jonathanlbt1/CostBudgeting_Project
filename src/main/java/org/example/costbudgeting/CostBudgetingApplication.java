@@ -2,12 +2,14 @@ package org.example.costbudgeting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @SpringBootApplication
+@EntityScan(basePackages = {"org.example.costbudgeting.entities"})
 public class CostBudgetingApplication {
 
     public static void main(String[] args) {

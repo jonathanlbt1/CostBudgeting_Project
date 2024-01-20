@@ -3,7 +3,7 @@ package org.example.costbudgeting.enums;
 import lombok.Getter;
 
 @Getter
-public enum EditalState {
+public enum BrazilianState {
 
     MG("Minas Gerais"),
     SP("São Paulo"),
@@ -34,7 +34,7 @@ public enum EditalState {
 
     private final String name;
 
-    EditalState(String name) {
+    BrazilianState(String name) {
         this.name = name;
     }
 }
