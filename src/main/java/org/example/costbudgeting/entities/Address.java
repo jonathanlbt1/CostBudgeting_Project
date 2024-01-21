@@ -1,8 +1,7 @@
 package org.example.costbudgeting.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.example.costbudgeting.enums.BrazilianState;
 
 import java.io.Serializable;
@@ -10,6 +9,9 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Table(name = "address")
 public class Address implements Serializable {
 

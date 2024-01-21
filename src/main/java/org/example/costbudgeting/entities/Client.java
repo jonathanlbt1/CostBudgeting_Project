@@ -1,10 +1,7 @@
 package org.example.costbudgeting.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -13,6 +10,8 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 public class Client implements Serializable{
 
     @Id

@@ -24,7 +24,7 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     public Budget updateBudget(Long id, Budget budget) {
-        Budget budgetToUpdate = budgetRepository.findById(id).get();
+        var budgetToUpdate = budgetRepository.findById(id).get();
         budgetToUpdate.setClient(budget.getClient());
         budgetToUpdate.setBatchSize(budget.getBatchSize());
         budgetToUpdate.setBrazilianState(budget.getBrazilianState());

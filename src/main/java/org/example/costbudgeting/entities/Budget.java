@@ -1,10 +1,7 @@
 package org.example.costbudgeting.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.costbudgeting.entities.costsbreakdown.Components;
 import org.example.costbudgeting.enums.BrazilianState;
 import org.example.costbudgeting.enums.Manufacturer;
@@ -17,6 +14,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 public class Budget implements Serializable {
 
