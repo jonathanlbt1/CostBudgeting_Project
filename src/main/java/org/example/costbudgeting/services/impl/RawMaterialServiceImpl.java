@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RawMaterialServiceImpl implements RawMaterialService {
 
-    RawMaterialRepository rawMaterialRepository;
+    private final RawMaterialRepository rawMaterialRepository;
 
     @Autowired
     public RawMaterialServiceImpl(RawMaterialRepository rawMaterialRepository) {

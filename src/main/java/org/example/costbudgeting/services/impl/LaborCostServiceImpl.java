@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class LaborCostServiceImpl implements LaborCostService {
 
-    @Autowired
-    private LaborCostRepository laborCostRepository;
+    private final LaborCostRepository laborCostRepository;
 
-    public LaborCostServiceImpl() {
-        super();
+    @Autowired
+    public LaborCostServiceImpl(LaborCostRepository laborCostRepository) {
+        this.laborCostRepository = laborCostRepository;
     }
 
     public LaborCost createNewLaborCost(LaborCost laborCost) {
