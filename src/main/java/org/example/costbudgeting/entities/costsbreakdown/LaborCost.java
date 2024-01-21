@@ -25,8 +25,10 @@ public class LaborCost {
     @Column(name = "budget_time")
     private Long budgetTime;
 
-    public Long getTotalLaborCost(HourTax hourTax, Long budgetTime){
-        return hourTax.getValue() * budgetTime;
+    public Double getTotalLaborCost(){
+        var hourTax = this.hourTax;
+        var budgetTime = this.budgetTime;
+        return (double) (hourTax.getValue() * budgetTime);
     }
 
     @ManyToOne

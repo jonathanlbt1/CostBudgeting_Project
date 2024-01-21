@@ -32,6 +32,10 @@ public class RawMaterial {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "components_id", nullable = false)
+    private Components components;
+
     public Double getUnitCostOfRawMaterial(){
         var totalTaxesPerUnit = this.taxes.getIcms().getValue() *
                 this.taxes.getPis_cofins().getValue() * this.taxes.getIpi().getValue();
@@ -42,7 +46,4 @@ public class RawMaterial {
         return getUnitCostOfRawMaterial() * quantity;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "components_id", nullable = false)
-    private Components components;
 }

@@ -1,29 +1,38 @@
 package org.example.costbudgeting.services.impl;
 
 import org.example.costbudgeting.entities.costsbreakdown.LaborCost;
+import org.example.costbudgeting.repositories.LaborCostRepository;
 import org.example.costbudgeting.services.LaborCostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LaborCostServiceImpl implements LaborCostService {
+
+    @Autowired
+    private LaborCostRepository laborCostRepository;
 
     public LaborCostServiceImpl() {
         super();
     }
 
     public LaborCost createNewLaborCost(LaborCost laborCost) {
-        return null;
+        return laborCostRepository.save(laborCost);
     }
 
     public void deleteLaborCost(Long id) {
-        return;
+        laborCostRepository.deleteById(id);
     }
 
     public LaborCost updateLaborCost(Long id, LaborCost laborCost) {
-        return null;
+        LaborCost laborCostToUpdate = laborCostRepository.findById(id).get();
+        laborCostToUpdate.setHourTax(laborCost.getHourTax());
+        laborCostToUpdate.setBudgetTime(laborCost.getBudgetTime());
+        laborCostToUpdate.setLaborCostName(laborCost.getLaborCostName());
+        return laborCostRepository.save(laborCostToUpdate);
     }
 
     public LaborCost getLaborCost(Long id) {
-        return null;
+        return laborCostRepository.findById(id).get();
     }
 }

@@ -4,6 +4,8 @@ import org.example.costbudgeting.entities.costsbreakdown.Components;
 import org.example.costbudgeting.entities.costsbreakdown.LaborCost;
 import org.example.costbudgeting.entities.costsbreakdown.RawMaterial;
 import org.example.costbudgeting.services.ComponentsService;
+import org.example.costbudgeting.services.LaborCostService;
+import org.example.costbudgeting.services.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +16,15 @@ public class ComponentsController {
 
     ComponentsService componentsService;
 
-    RawMaterial rawMaterial;
+    RawMaterialService rawMaterialService;
 
-    LaborCost laborCost;
+    LaborCostService laborCostService;
 
     @Autowired
-    public ComponentsController(ComponentsService componentsService, RawMaterial rawMaterial, LaborCost laborCost) {
+    public ComponentsController(ComponentsService componentsService, RawMaterialService rawMaterialService, LaborCostService laborCostService) {
         this.componentsService = componentsService;
-        this.rawMaterial = rawMaterial;
-        this.laborCost = laborCost;
+        this.rawMaterialService = rawMaterialService;
+        this.laborCostService = laborCostService;
     }
 
     @PostMapping("/components")
@@ -46,6 +48,64 @@ public class ComponentsController {
         return new ResponseEntity<>(componentsService.getComponents(id), HttpStatus.OK);
     }
 
+    @PostMapping("/components/{id}/raw-material")
+    public ResponseEntity<RawMaterial> createNewRawMaterial(RawMaterial rawMaterial) {
+        return new ResponseEntity<>(rawMaterialService.createNewRawMaterial(rawMaterial), HttpStatus.CREATED);
+    }
 
+    @PutMapping("/components/{id}/raw-material/{id}")
+    public ResponseEntity<RawMaterial> updateRawMaterial(Long id, RawMaterial rawMaterial) {
+        return new ResponseEntity<>(rawMaterialService.updateRawMaterial(id, rawMaterial), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/components/{id}/raw-material/{id}")
+    public ResponseEntity<RawMaterial> deleteRawMaterial(Long id) {
+        rawMaterialService.deleteRawMaterial(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/components/{id}/raw-material/{id}")
+    public ResponseEntity<RawMaterial> getRawMaterial(Long id) {
+        return new ResponseEntity<>(rawMaterialService.getRawMaterial(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/components/{id}/raw-material/{id}/unit-cost")
+    public ResponseEntity<Double> getUnitCostOfRawMaterial(Long id) {
+        var rawMaterial = rawMaterialService.getRawMaterial(id);
+        return new ResponseEntity<>(rawMaterial.getUnitCostOfRawMaterial(), HttpStatus.OK);
+    }
+
+    @GetMapping("/components/{id}/raw-material/{id}/total-cost")
+    public ResponseEntity<Double> getTotalCostOfRawMaterials(Long id) {
+        var rawMaterial = rawMaterialService.getRawMaterial(id);
+        return new ResponseEntity<>(rawMaterial.getTotalCostOfRawMaterials(), HttpStatus.OK);
+    }
+
+    @PostMapping("/components/{id}/labor-cost")
+    public ResponseEntity<RawMaterial> createNewLaborCost(RawMaterial rawMaterial) {
+        return new ResponseEntity<>(rawMaterialService.createNewRawMaterial(rawMaterial), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/components/{id}/labor-cost/{id}")
+    public ResponseEntity<RawMaterial> updateLaborCost(Long id, RawMaterial rawMaterial) {
+        return new ResponseEntity<>(rawMaterialService.updateRawMaterial(id, rawMaterial), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/components/{id}/labor-cost/{id}")
+    public ResponseEntity<RawMaterial> deleteLaborCost(Long id) {
+        rawMaterialService.deleteRawMaterial(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/components/{id}/labor-cost/{id}")
+    public ResponseEntity<RawMaterial> getLaborCost(Long id) {
+        return new ResponseEntity<>(rawMaterialService.getRawMaterial(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/components/{id}/labor-cost/{id}/unit-cost")
+    public ResponseEntity<Double> getUnitCostOfLaborCost(Long id) {
+        LaborCost laborCost = laborCostService.getLaborCost(id);
+        return new ResponseEntity<>(laborCost.getTotalLaborCost(), HttpStatus.OK);
+    }
 
 }
