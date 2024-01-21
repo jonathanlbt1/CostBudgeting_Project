@@ -13,10 +13,8 @@ import java.io.Serializable;
 @Table(name = "address")
 public class Address implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
     private Long id;
 
     @Column(name = "street")

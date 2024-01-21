@@ -15,7 +15,14 @@ public class LaborCost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "labor_cost_name")
+    private String laborCostName;
+
+    @Column(name = "hour_tax")
     private HourTax hourTax;
+
+    @Column(name = "budget_time")
     private Long budgetTime;
 
     public Long getTotalLaborCost(HourTax hourTax, Long budgetTime){
